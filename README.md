@@ -1,11 +1,9 @@
 # landingpage
 
-A landing page boilerplate to get a site up and running.
+F1 Clash landing page
 
-_REMEMBER_
-To update the .gitignore file to remove the public folder.
-
-Designed and developed by Richy Pears
+Designed by Chris Wiseman
+Developed by Richy Pears
 
 # git code
 
