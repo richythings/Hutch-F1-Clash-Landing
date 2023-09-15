@@ -1,0 +1,3 @@
+/files/*  https://a.storyblok.com/:splat 200
+/images/*  https://img2.storyblok.com/:splat 200
+/static/*  https://a.storyblok.com/:splat 200
