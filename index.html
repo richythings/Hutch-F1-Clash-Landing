@@ -5,19 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <meta name="description"
-    content="The F1® Clash 2023 Community Championship winning team will be announced on the week commencing 2nd October">
+  <meta name="description" content="The F1® Clash 2023 Community Championship winning team is...">
 
   <meta property="og:title" content="F1® Clash 2023 Community Championship">
-  <meta property="og:description"
-    content="The F1® Clash 2023 Community Championship winning team will be announced on the week commencing 2nd October">
+  <meta property="og:description" content="The F1® Clash 2023 Community Championship winning team is...">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://a.storyblok.com/f/212347/1920x1080/73666c3ca0/image-1.png/m/1200x627/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator">
   <meta name="twitter:title" content="F1® Clash 2023 Community Championship">
-  <meta name="twitter:description"
-    content="The F1® Clash 2023 Community Championship winning team will be announced on the week commencing 2nd October">
+  <meta name="twitter:description" content="The F1® Clash 2023 Community Championship winning team is...">
   <meta name="twitter:image" content="https://a.storyblok.com/f/212347/1920x1080/73666c3ca0/image-1.png/m/1200x627/">
 
   <meta name="robots" content="noindex" />
@@ -100,6 +97,8 @@
           aspectRatio: {
             "21x9": "21/9",
             "9x14": "9/14",
+            "16x9": "16/9",
+            "9x16": "9/16",
           },
         }
       }
@@ -112,25 +111,17 @@
   </style>
 </head>
 
-<body class="f1-regular">
-  <nav class="w-full flex flex-row items-center justify-center p-6 bg-black text-center ">
+<body class="f1-regular pt-0 bg-black">
+  <nav id="f1nav"
+    class="w-full flex flex-row items-center justify-center px-6 py-6 sm:py-3 md:py-6 bg-black text-center fixed top-0 right-0 left-0 z-50 transition-all duration-1000">
     <img src="https://a.storyblok.com/f/212347/555x60/8aee427b75/logo-f1-clash-inline-0x60.svg" class="h-6
       mx-auto" alt="F1® Clash" />
   </nav>
-  <section
-    class="w-full py-6 sm:py-10 sm:aspect-auto md:aspect-21x9 flex flex-col items-center justify-center text-center bg-purpledeep text-white brand-background bg-center py-6 px-2">
-    <div class="flex flex-col gap-6 mx-auto w-full lg:w-[900px]">
-      <img src="https://a.storyblok.com/f/212347/388x126/958e9614c7/f1-clash-community-championship-2023.svg"
-        class="h-25 mx-auto" alt="F1® Clash Community Championship 2023" />
-
-      <h1 class="text-2xl md:text-3xl lg:text-4xl f1-bold">
-        Community Championship 2023 Has Ended
-      </h1>
-      <p class="text-lg sm:text-xl md:text-2xl mb-64 md:mb-52">Thank you for racing! We are verifying the results. The
-        winning team will be announced on the week commencing 2nd October.</p>
-    </div>
+  <section class="relative w-full aspect-9x16 sm:aspect-16x9">
+    <iframe id="theVideo" src="https://player.vimeo.com/video/870992938?loop=true" width="100%" height="100%"
+      frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
   </section>
-  <section class="w-full py-12 px-6 bg-black text-white bg-repeat-x bg-top -mt-12 sm:mt-0"
+  <section class="w-full py-12 px-6 bg-black text-white bg-repeat-x bg-top sm:mt-0"
     style="background-image: url(https://a.storyblok.com/f/212347/1920x250/a85268770d/background-dark-lines.png);">
     <div class="w-full lg:w-2/3 mx-auto text-center flex flex-col gap-12 items-center justify-center">
       <h2 class="text-2xl uppercase f1-bold">
@@ -170,14 +161,10 @@
       </h2>
       <div class="w-full text-left p-4 border-white border-t border-r rounded-tr-[10px]">
         <h3 class="block w-full py-3 px-3 rounded bg-pink text-white mb-4 f1-bold">When will we find out who the cash
-          prize
-          winners
-          are?
+          prize winners are?
         </h3>
         <p class="text-sm">We're in the process of verifying the cash prize winners from the F1® Clash Community
-          Championship 2023. We
-          will be announcing the winning team on week commencing 2nd October, after which point we'll start reaching out
-          to the cash prize winners.</p>
+          Championship 2023. If you're a winner, you'll be contacted by email and in-game inbox message.</p>
       </div>
     </div>
   </section>
@@ -240,6 +227,60 @@
       document.querySelector("body").classList.add("brand-loaded");
     }, 1000)
   };
+</script>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+  const navbar = document.getElementById("f1nav");
+  var layout = null;
+  var options = null;
+
+  var desktopOptions = {
+    url: "https://player.vimeo.com/video/870992938?loop=true",
+  }
+
+  var mobileOptions = {
+    url: "https://player.vimeo.com/video/870993459?loop=true",
+  }
+  var videoPlayer = new Vimeo.Player('theVideo');
+
+  if (document.documentElement.clientWidth >= 640) {
+    layout = "desktop" // Set the layout var and options
+    options = desktopOptions;
+    //    videoPlayer.loadVideo(desktopOptions.url)
+  } else {
+    layout = "mobile" // Set the layout var and options
+    options = mobileOptions;
+    videoPlayer.loadVideo(mobileOptions.url)
+  }
+
+  videoPlayer.on('playing', function (data) {
+    // data is an object containing properties specific to that event
+    //alert('Playing')
+    navbar.style.opacity = 0;
+  });
+  videoPlayer.on('pause', function (data) {
+    // data is an object containing properties specific to that event
+    //alert('Paused')
+    navbar.style.opacity = 1;
+
+  });
+
+  function windowResize() {
+    if (layout === "mobile" && document.documentElement.clientWidth >= 640) { // If the layout is set to mobile AND we are above the mobile size
+      layout = "desktop"; // Update the layout
+      // Load the DESKTOP video
+      videoPlayer.loadVideo(desktopOptions.url)
+    } else if (layout === "desktop" && document.documentElement.clientWidth < 640) { // If the layout is set to desktop AND we are below the mobile size
+      layout = "mobile"; // Update the layout
+      // Load the MOBILE video
+      videoPlayer.loadVideo(mobileOptions.url)
+    }
+  }
+
+  window.addEventListener('resize', windowResize);
+
+  windowResize();
 </script>
 
 </html>
